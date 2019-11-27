@@ -1,13 +1,7 @@
 const path = require("path");
 var HtmlWebpackPlugin = require("html-webpack-plugin")
 module.exports = {
-    mode:"development",
-    entry:"./src/index.js",
-    output:{
-        filename:"main.[chunkhash].js",
-        //filename:"main.[contenthash].js", we can use either contenthash or chunkhash
-        path:path.resolve(__dirname,"dist")
-    },
+  entry:"./src/index.js",
     plugins:[new HtmlWebpackPlugin({
         template:'./src/index.html'
     })],
@@ -19,6 +13,17 @@ module.exports = {
                 "css-loader", //second
                 "sass-loader" //first 
             ]
+        },
+        {
+            test:/\.html$/,
+            use:["html-loader"]
+        },
+        {
+            test:/\.(svg|png|jpg|gif)$/,
+            use:{loader:"file-loader",options:{
+                name:'[name].[hash].[ext]',
+                outputPath: "imgs"
+            }}
         }
         
     ]
