@@ -9,13 +9,7 @@ module.exports = {
     })],
     module:{
         rules:[
-            {
-                test:/\.scss$/,
-                use:["style-loader", //third step
-                "css-loader", //second
-                "sass-loader" //first 
-            ]
-        },
+            
         {
             test:/\.html$/,
             use:["html-loader"]
